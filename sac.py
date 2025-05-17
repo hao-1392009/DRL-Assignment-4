@@ -124,7 +124,7 @@ class SAC:
 
     @torch.no_grad()
     def get_action(self, state: np.ndarray):
-        state = torch.FloatTensor(state, device=self.device)
+        state = torch.tensor(state, dtype=torch.float32, device=self.device)
         return self.actor(state).cpu().numpy()
 
     def soft_update_target(self):

@@ -12,11 +12,11 @@ class ReplayBuffer:
 
     def add(self, state, action, reward, next_state, done):
         self.buffer.append((
-            torch.FloatTensor(state, device=self.device),
-            torch.FloatTensor(action, device=self.device),
-            torch.FloatTensor([reward], device=self.device),
-            torch.FloatTensor(next_state, device=self.device),
-            torch.FloatTensor([done], device=self.device)
+            torch.tensor(state, dtype=torch.float32, device=self.device),
+            torch.tensor(action, dtype=torch.float32, device=self.device),
+            torch.tensor([reward], dtype=torch.float32, device=self.device),
+            torch.tensor(next_state, dtype=torch.float32, device=self.device),
+            torch.tensor([done], dtype=torch.float32, device=self.device)
         ))
 
     def sample(self, batch_size):
