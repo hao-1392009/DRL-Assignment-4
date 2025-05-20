@@ -103,7 +103,7 @@ def main():
     if args.resume_from_checkpoint:
         checkpoint_dir = output_dir / f"checkpoint-{args.resume_from_checkpoint}"
         logger.info(f"Loading checkpoint from {checkpoint_dir}")
-        replay_buffer = torch.load(checkpoint_dir / "replay_buffer.pt")
+        replay_buffer = torch.load(checkpoint_dir / "replay_buffer.pt", weights_only=False)
         logger.info(f"Successfully loaded replay buffer from {checkpoint_dir}")
     else:
         checkpoint_dir = None
